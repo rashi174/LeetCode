@@ -47,3 +47,29 @@ public:
         return temp->next;
     } 
 };
+// Better way to write same code
+
+Node* sortedMerge(Node* head_A, Node* head_B)  
+{  
+    // code here
+    Node *result=new Node(0);
+    Node *l1=head_A;
+    Node *l2=head_B;
+    Node *dummy=result;
+    
+    while(l1 && l2){
+        if (l1->data < l2->data){
+            dummy->next=new Node(l1->data);
+            l1=l1->next;
+        }
+        else{
+            dummy->next=new Node(l2->data);
+            l2=l2->next;            
+        }
+        dummy=dummy->next;
+        
+    }
+    if(l1)dummy->next=l1;
+    if(l2)dummy->next=l2;
+    return result->next;
+}  
